@@ -40,10 +40,16 @@ const _ = {
         }
     },
 
-    
+    initial: function (array) {
+        let newResult = [];
+        for (let i = 0; i < array.length - 1; i += 1) {
+            newResult.push(array[i]);
+        }
+        return newResult;
+    }
 }
 
-let anArray = [1, 2, 3];
+let anArray = [1, 2, 3, 4, 5];
 let anObject = {one: 1, two: 2, three: 3};
 
 function addNum(num) {
@@ -56,3 +62,4 @@ _.each(anArray, console.log);
 console.log(_.map(anArray, addNum));
 console.log(_.reduce(anArray, addNum));
 console.log(_.first(anArray));
+console.log(_.initial(anArray));
