@@ -28,6 +28,7 @@ const _ = {
 
     reduce: function (collection, iterator) {
         let result = 0;
+
         for (let i = 0; i < collection.length; i += 1) {
             result += iterator(collection[i]);
         }
@@ -38,11 +39,21 @@ const _ = {
         if (index === undefined) {
             return array[0];
         }
+        for (let i = 0; i < index; i += 1) {
+            console.log(array[i]);
+
+        }
     },
 
-    initial: function (array) {
+    initial: function (array, index) {
         let newResult = [];
-        for (let i = 0; i < array.length - 1; i += 1) {
+
+        if (index === undefined) {
+            for (let i = 0; i < array.length - 1; i += 1) {
+                newResult.push(array[i]);
+            }
+        }
+        for (let i = 0; i < array.length - index; i += 1) {
             newResult.push(array[i]);
         }
         return newResult;
@@ -61,5 +72,5 @@ function addNum(num) {
 _.each(anArray, console.log);
 console.log(_.map(anArray, addNum));
 console.log(_.reduce(anArray, addNum));
-console.log(_.first(anArray));
-console.log(_.initial(anArray));
+console.log(_.first(anArray), 2);
+console.log(_.initial(anArray, 4));
