@@ -12,8 +12,14 @@ const _ = {
 
     map: (collection, iterator) => {
         let newArray = [];
-        for (let i = 0; i < collection.length; i += 1) {
-            newArray.push(iterator(collection[i]));
+        
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i += 1) {
+                newArray.push(iterator(collection[i]));
+            }
+        }
+        for (key in collection) {
+            newArray.push(iterator(collection[key]));
         }
         return newArray;
     }
@@ -28,4 +34,4 @@ function addNum(num) {
 }
 
 // console.log(_.each(anObject, addNum));
-console.log(_.map(anArray, addNum));
+console.log(_.map(anObject, addNum));
