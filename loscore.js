@@ -36,12 +36,14 @@ const _ = {
     },
 
     first: function (array, index) {
-        if (index === undefined) {
+        if (typeof index === 'number') {
+            let result = [];
+            for (let i = 0; i < index; i += 1) {
+                result.push(array[i]);
+            }
+            return result.join(' ');
+        } else {
             return array[0];
-        }
-        for (let i = 0; i < index; i += 1) {
-            console.log(array[i]);
-
         }
     },
 
@@ -69,8 +71,8 @@ function addNum(num) {
     return result;
 }
 
-_.each(anArray, console.log);
-console.log(_.map(anArray, addNum));
-console.log(_.reduce(anArray, addNum));
-console.log(_.first(anArray), 2);
-console.log(_.initial(anArray, 4));
+// _.each(anArray, console.log);
+// console.log(_.map(anArray, addNum));
+// console.log(_.reduce(anArray, addNum));
+console.log(_.first(anArray, 3));
+// console.log(_.initial(anArray, 3));
