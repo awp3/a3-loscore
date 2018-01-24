@@ -7,3 +7,5 @@ This will be my practice as a beginner developer.
 1. Create a repository
 
 2. Completed the _.each function
+
+3. Completed the _.map function
