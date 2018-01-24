@@ -13,3 +13,5 @@ This will be my practice as a beginner developer.
 4. Completed the _.reduce function
 
 5. Completed the _.first function
+
+6. Completed the _.initial function
