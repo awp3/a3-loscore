@@ -1,37 +1,48 @@
 const _ = {
-    each: (collection, iterator) => {
+    each: function (collection, iterator) {
         if (Array.isArray(collection)) {
-        for (let i = 0; i < collection.length; i += 1) {
-            iterator(collection[i]);
+            for (let i = 0; i < collection.length; i += 1) {
+                iterator(collection[i]);
             }
-        }
-        for (key in collection) {
-            iterator(collection[key]);
+        } else {
+            for (key in collection) {
+                iterator(collection[key]);
+            }
         }
     },
 
-    map: (collection, iterator) => {
+    map: function (collection, iterator) {
         let newArray = [];
         
         if (Array.isArray(collection)) {
             for (let i = 0; i < collection.length; i += 1) {
                 newArray.push(iterator(collection[i]));
             }
-        }
-        for (key in collection) {
-            newArray.push(iterator(collection[key]));
+        } else {
+            for (key in collection) {
+                newArray.push(iterator(collection[key]));
+            }
         }
         return newArray;
     },
 
-    reduce: (collection, iterator) => {
+    reduce: function (collection, iterator) {
         let result = 0;
         for (let i = 0; i < collection.length; i += 1) {
             result += iterator(collection[i]);
         }
         return result;
-    }
+    },
+
+    first: function (array, index) {
+        if (index === undefined) {
+            return array[0];
+        }
+    },
+
+    
 }
+
 let anArray = [1, 2, 3];
 let anObject = {one: 1, two: 2, three: 3};
 
@@ -41,4 +52,7 @@ function addNum(num) {
     return result;
 }
 
-console.log(_.map(anObject, addNum));
+_.each(anArray, console.log);
+console.log(_.map(anArray, addNum));
+console.log(_.reduce(anArray, addNum));
+console.log(_.first(anArray));
