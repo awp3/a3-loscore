@@ -22,6 +22,14 @@ const _ = {
             newArray.push(iterator(collection[key]));
         }
         return newArray;
+    },
+
+    reduce: (collection, iterator) => {
+        let result = 0;
+        for (let i = 0; i < collection.length; i += 1) {
+            result += iterator(collection[i]);
+        }
+        return result;
     }
 }
 let anArray = [1, 2, 3];
