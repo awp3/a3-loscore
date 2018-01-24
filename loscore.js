@@ -41,5 +41,4 @@ function addNum(num) {
     return result;
 }
 
-// console.log(_.each(anObject, addNum));
 console.log(_.map(anObject, addNum));
