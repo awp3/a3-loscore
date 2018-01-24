@@ -11,3 +11,5 @@ This will be my practice as a beginner developer.
 3. Completed the _.map function
 
 4. Completed the _.reduce function
+
+5. Completed the _.first function
