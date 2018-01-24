@@ -9,3 +9,5 @@ This will be my practice as a beginner developer.
 2. Completed the _.each function
 
 3. Completed the _.map function
+
+4. Completed the _.reduce function
