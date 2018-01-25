@@ -17,3 +17,5 @@ This will be my practice as a beginner developer.
 6. Completed the _.initial function
 
 7. Completed the _.last function
+
+8. Completed the _.find function
