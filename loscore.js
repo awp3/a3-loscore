@@ -170,10 +170,25 @@ const _ = {
         }
         // return array when done
         return result;
+    },
+
+    every: function (array, iterator) {
+        // iterate through the array
+        for (let i = 0; i < array.length; i += 1) {
+            // execute the iterator on each element
+            // if it doesnt pass, return false
+            if (!iterator(array[i])) {
+                return false;
+            }
+        }
+        // otherwise, return true
+        return true;
     }
 }
 
 let anArray = [1, 2, 3, 4, 5, 6, 7, 8];
+let posArray = [2, 4, 6];
+let negArray = [1, 3, 5];
 let anObject = {one: 1, two: 2, three: 3};
 var inventory = [
     {name: 'apples', quantity: 2},
@@ -203,4 +218,5 @@ function evenNum(num) {
 // console.log(_.last(anArray, 3));
 // console.log(_.find(inventory, isCherries));
 // console.log(_.filter(anArray, evenNum));
-console.log(_.reject(anArray,evenNum));
+// console.log(_.reject(anArray,evenNum));
+console.log(_.every(negArray, evenNum));
