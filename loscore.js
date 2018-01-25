@@ -136,10 +136,27 @@ const _ = {
             };
             // otherwise return undefined
         }
+    },
+
+    filter: function (array, iterator) {
+        // create new array
+        let result = [];
+
+        // iterate through an array
+        for (let i = 0; i < array.length; i += 1) {
+            // execute the iterator on each element
+            // if the element passes
+            if (iterator(array[i])) {
+                // it will be added to an array
+                result.push(array[i]);
+            }
+        }
+        // returns array when done
+        return result;
     }
 }
 
-let anArray = [1, 2, 3, 4, 5];
+let anArray = [1, 2, 3, 4, 5, 6, 7, 8];
 let anObject = {one: 1, two: 2, three: 3};
 var inventory = [
     {name: 'apples', quantity: 2},
@@ -157,10 +174,15 @@ function isCherries(fruit) {
     return fruit.name === 'cherries';
 }
 
+function evenNum(num) {
+    return num % 2 == 0;
+}
+
 // _.each(anArray, console.log);
 // console.log(_.map(anArray, addNum));
 // console.log(_.reduce(anArray, addNum));
 // console.log(_.first(anArray, 3));
 // console.log(_.initial(anArray, 3));
 // console.log(_.last(anArray, 3));
-console.log(_.find(inventory, isCherries));
+// console.log(_.find(inventory, isCherries));
+console.log(_.filter(anArray, evenNum));
