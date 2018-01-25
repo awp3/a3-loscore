@@ -153,6 +153,23 @@ const _ = {
         }
         // returns array when done
         return result;
+    },
+
+    reject: function (array, iterator) {
+        // create a new array
+        let result = [];
+    
+        // iterate through the collection
+        for (let i = 0; i < array.length; i += 1) {
+            // execute the callback on each element
+            // if it doesnt pass the test
+            if (!iterator(array[i])) {
+                // put in result array
+                result.push(array[i]);
+            }
+        }
+        // return array when done
+        return result;
     }
 }
 
@@ -185,4 +202,5 @@ function evenNum(num) {
 // console.log(_.initial(anArray, 3));
 // console.log(_.last(anArray, 3));
 // console.log(_.find(inventory, isCherries));
-console.log(_.filter(anArray, evenNum));
+// console.log(_.filter(anArray, evenNum));
+console.log(_.reject(anArray,evenNum));
