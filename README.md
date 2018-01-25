@@ -19,3 +19,9 @@ This will be my practice as a beginner developer.
 7. Completed the _.last function
 
 8. Completed the _.find function
+
+9. Completed the _.filter function
+
+10. Completed the _.reject function
+
+11. Completed the _.every function
