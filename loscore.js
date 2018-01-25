@@ -123,11 +123,29 @@ const _ = {
         // and then turn the array into a string with spaces
         // and return the string
         return result.join(' ')
+    },
+
+    find: function (array, iterator) {
+        // iterate through array
+        for (let i = 0; i < array.length; i++) {
+            // execute iterator on each array element
+            // if current element pass iterators condition
+            if (iterator(array[i])) {
+                // return current element
+                return array[i];
+            };
+            // otherwise return undefined
+        }
     }
 }
 
 let anArray = [1, 2, 3, 4, 5];
 let anObject = {one: 1, two: 2, three: 3};
+var inventory = [
+    {name: 'apples', quantity: 2},
+    {name: 'bananas', quantity: 0},
+    {name: 'cherries', quantity: 5}
+];
 
 function addNum(num) {
     let result = 0;
@@ -135,9 +153,14 @@ function addNum(num) {
     return result;
 }
 
+function isCherries(fruit) { 
+    return fruit.name === 'cherries';
+}
+
 // _.each(anArray, console.log);
 // console.log(_.map(anArray, addNum));
 // console.log(_.reduce(anArray, addNum));
 // console.log(_.first(anArray, 3));
 // console.log(_.initial(anArray, 3));
-console.log(_.last(anArray, 3));
+// console.log(_.last(anArray, 3));
+console.log(_.find(inventory, isCherries));
