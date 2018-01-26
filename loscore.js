@@ -190,6 +190,7 @@ const _ = {
         let result = [];
         // iterate through collection
         for (let i = 0; i < collection.length; i += 1) {
+            // iterate through each elements value
             for (let value of Object.values(collection[i])) {
                 // if a value matches any of the properties values
                 if (value === Object.values(properties)[i]) {
@@ -207,38 +208,35 @@ let anArray = [1, 2, 3, 4, 5, 6, 7, 8];
 let posArray = [2, 4, 6];
 let negArray = [1, 3, 5];
 let anObject = {one: 1, two: 2, three: 3};
-var inventory = [
+let inventory = [
     {name: 'apples', quantity: 2},
     {name: 'bananas', quantity: 0},
     {name: 'cherries', quantity: 5}
 ];
-let arrayObjects = [{title: "Cymbeline", author: "Shakespeare", year: 1611},
-    {title: "The Tempest", author: "Shakespeare", year: 1611}]
-    
-    function addNum(num) {
-        let result = 0;
-        result = num + 2;
-        return result;
-    }
-    
-    function isCherries(fruit) { 
-        return fruit.name === 'cherries';
-    }
-    
-    function evenNum(num) {
-        return num % 2 == 0;
-    }
-    
-    
-    // _.each(anArray, console.log);
-    // console.log(_.map(anArray, addNum));
-    // console.log(_.reduce(anArray, addNum));
-    // console.log(_.first(anArray, 3));
-    // console.log(_.initial(anArray, 3));
-    // console.log(_.last(anArray, 3));
-    // console.log(_.find(inventory, isCherries));
-    // console.log(_.filter(anArray, evenNum));
-    // console.log(_.reject(anArray,evenNum));
-    // console.log(_.every(negArray, evenNum));
-    console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
-    
+let arrayObjects = [{title: "Cymbeline", author: "Shakespeare", year: 1611}, {title: "The Tempest", author: "Shakespeare", year: 1611}];
+
+function addNum(num) {
+    let result = 0;
+    result = num + 2;
+    return result;
+};
+
+function isCherries(fruit) { 
+    return fruit.name === 'cherries';
+};
+
+function evenNum(num) {
+    return num % 2 == 0;
+};
+
+// _.each(anArray, console.log);
+// console.log(_.map(anArray, addNum));
+// console.log(_.reduce(anArray, addNum));
+// console.log(_.first(anArray, 3));
+// console.log(_.initial(anArray, 3));
+// console.log(_.last(anArray, 3));
+// console.log(_.find(inventory, isCherries));
+// console.log(_.filter(anArray, evenNum));
+// console.log(_.reject(anArray,evenNum));
+// console.log(_.every(negArray, evenNum));
+console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
