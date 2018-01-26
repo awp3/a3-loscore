@@ -25,3 +25,5 @@ This will be my practice as a beginner developer.
 10. Completed the _.reject function
 
 11. Completed the _.every function
+
+12. Completed the _.where function
