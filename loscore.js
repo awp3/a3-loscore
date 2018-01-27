@@ -201,6 +201,28 @@ const _ = {
         }
         // return the array when done
         return result;
+    },
+
+    findWhere: function (collection, properties) {
+        // iterate through the collection
+        for (let i = 0; i < collection.length; i += 1) {
+            for (let object in collection) {
+                for (let key in collection[i]) {
+                    // check the key and see if it matches the properties key
+                    if (key === Object.keys(properties)[i]) {
+                        // if yes, then check the keys value
+                        for (let value of Object.values(collection[i])) {
+                            // then check the keys value for a match
+                            if (value === Object.values(properties)[i]) {
+                                // if yes, return the object
+                                return collection[i];
+                            }
+                        }
+                    }
+                }    
+            }
+        }
+        // if no match, return undefined
     }
 }
 
@@ -239,4 +261,5 @@ function evenNum(num) {
 // console.log(_.filter(anArray, evenNum));
 // console.log(_.reject(anArray,evenNum));
 // console.log(_.every(negArray, evenNum));
-console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
+// console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
+console.log(_.findWhere(arrayObjects, {title: "Ahart"}));
