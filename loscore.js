@@ -248,6 +248,21 @@ const _ = {
         }
         // else return, return false
         return false;
+    },
+
+    contains: function (collection, value) {
+        // iterate through collection
+        for (let currentElement = 0;
+             currentElement < collection.length;
+             currentElement += 1) {
+            // if current element is equal to the value argument
+            if (collection[currentElement] === value) {
+                // return true
+                return true;
+            }
+        }
+        // if no value return false
+        return false;
     }
 }
 
@@ -288,4 +303,5 @@ function evenNum(num) {
 // console.log(_.every(negArray, evenNum));
 // console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
 // console.log(_.findWhere(arrayObjects, {year: 1614}));
-console.log(_.some(negArray, evenNum));
+// console.log(_.some(negArray, evenNum));
+console.log(_.contains(anArray, 9));
