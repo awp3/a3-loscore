@@ -205,24 +205,25 @@ const _ = {
 
     findWhere: function (collection, properties) {
         // iterate through the collection
+        let tempProperities;
+        let tempPropValue;
+
+        for (let prop in properties) {
+            tempProperities = prop;
+            tempPropValue = properties[prop];
+        }
         for (let i = 0; i < collection.length; i += 1) {
-            for (let object in collection) {
-                for (let key in collection[i]) {
-                    // check the key and see if it matches the properties key
-                    if (key === Object.keys(properties)[i]) {
-                        // if yes, then check the keys value
-                        for (let value of Object.values(collection[i])) {
-                            // then check the keys value for a match
-                            if (value === Object.values(properties)[i]) {
-                                // if yes, return the object
-                                return collection[i];
-                            }
-                        }
+            let temp = collection[i];
+
+            for (let key in temp) {
+                if (key === tempProperities) {
+                    if (temp[key] === tempPropValue) {
+                        return temp;
                     }
-                }    
+                }
             }
         }
-        // if no match, return undefined
+        return;
     }
 }
 
@@ -235,7 +236,7 @@ let inventory = [
     {name: 'bananas', quantity: 0},
     {name: 'cherries', quantity: 5}
 ];
-let arrayObjects = [{title: "Cymbeline", author: "Shakespeare", year: 1611}, {title: "The Tempest", author: "Shakespeare", year: 1611}];
+let arrayObjects = [{title: "Cymbeline", author: "Shakespeare", year: 1611}, {title: "The Tempest", author: "Shakespeare", year: 1611}, {title: "The Tempest2", author: "Shakespearez", year: 1614}];
 
 function addNum(num) {
     let result = 0;
@@ -262,4 +263,4 @@ function evenNum(num) {
 // console.log(_.reject(anArray,evenNum));
 // console.log(_.every(negArray, evenNum));
 // console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
-console.log(_.findWhere(arrayObjects, {title: "Ahart"}));
+console.log(_.findWhere(arrayObjects, {year: 1614}));
