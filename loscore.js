@@ -204,26 +204,50 @@ const _ = {
     },
 
     findWhere: function (collection, properties) {
-        // iterate through the collection
+        // create temp holders for the properties key and values
         let tempProperities;
         let tempPropValue;
 
+        // iterate through properties
         for (let prop in properties) {
+            // assign key and value to temp property variables
             tempProperities = prop;
             tempPropValue = properties[prop];
         }
+        // iterate through collection
         for (let i = 0; i < collection.length; i += 1) {
+            // create temp variable for current object
             let temp = collection[i];
 
+            // iterate through the objects keys
             for (let key in temp) {
+                // if key and tempProperties key matches
                 if (key === tempProperities) {
+                    // and if the current objects key value matches the tempProperties key value
                     if (temp[key] === tempPropValue) {
+                        // return current object
                         return temp;
                     }
                 }
             }
         }
+        // if no match, return undefined
         return;
+    },
+
+    some: function (collection, iterator) {
+        // iterate through the collection
+        for (let currentElement = 0;
+             currentElement < collection.length;
+             currentElement += 1) {
+            // execute the iterator on the current element
+            if (iterator(collection[currentElement])) {
+                // if it passes, return true
+                return true;
+            }
+        }
+        // else return, return false
+        return false;
     }
 }
 
@@ -263,4 +287,5 @@ function evenNum(num) {
 // console.log(_.reject(anArray,evenNum));
 // console.log(_.every(negArray, evenNum));
 // console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
-console.log(_.findWhere(arrayObjects, {year: 1614}));
+// console.log(_.findWhere(arrayObjects, {year: 1614}));
+console.log(_.some(negArray, evenNum));
