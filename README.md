@@ -27,3 +27,11 @@ This will be my practice as a beginner developer.
 11. Completed the _.every function
 
 12. Completed the _.where function
+
+13. Completed the _.findWhere function
+
+14. Completed the _.some function
+
+15. Completed the _.contains function
+
+16. Completed the _.invoke function
