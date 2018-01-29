@@ -263,12 +263,30 @@ const _ = {
         }
         // if no value return false
         return false;
+    },
+
+    invoke: function (collection, methodName) {
+        // create a result array
+        let result = [];
+        // iterate through collection
+        for (let indexValue = 0; indexValue < collection.length; indexValue += 1) {
+            // assign mini array to tempValue
+            let tempValue = collection[indexValue];
+            // apply methodName to tempValue  
+            // **********    TROUBLE POINT    *************
+            tempValue[methodName]();
+            // push result to result array
+            result.push(tempValue[methodName]());
+        }
+        // return array
+        return result;
     }
 }
 
 let anArray = [1, 2, 3, 4, 5, 6, 7, 8];
 let posArray = [2, 4, 6];
 let negArray = [1, 3, 5];
+let arrayOfArrays = [[5, 1, 7], [3, 2, 1]];
 let anObject = {one: 1, two: 2, three: 3};
 let inventory = [
     {name: 'apples', quantity: 2},
@@ -304,4 +322,5 @@ function evenNum(num) {
 // console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
 // console.log(_.findWhere(arrayObjects, {year: 1614}));
 // console.log(_.some(negArray, evenNum));
-console.log(_.contains(anArray, 9));
+// console.log(_.contains(anArray, 9));
+console.log(_.invoke(arrayOfArrays, 'sort'));
