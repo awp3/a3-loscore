@@ -35,3 +35,5 @@ This will be my practice as a beginner developer.
 15. Completed the _.contains function
 
 16. Completed the _.invoke function
+
+17. Completed the _.max function
