@@ -297,6 +297,40 @@ const _ = {
             }
         }
         return result;
+    },
+
+    max: function (collection) {
+        // create variable to hold highest value
+        let highestValue = 0;
+        // iterate through collection
+        for (let i = 0; i < collection.length; i += 1) {
+            // create variable for current value in collection
+            let currentValue = collection[i];
+            // iterate through the objects
+            for (key in currentValue) {
+                // if type of the current value is number
+                if (typeof currentValue[key] === 'number') {
+                    // and if the highestValue is lower than the current value
+                    if (highestValue < currentValue[key]) {
+                        // assign current value to the highestValue
+                        highestValue = currentValue[key];
+                    }
+                }
+            }
+        }
+        // now, iterate through the array again
+        for (let j = 0; j < collection.length; j += 1) {
+            // and assign the current value to a variable
+            let currentValue = collection[j];
+            // and iterate through the selectedValue
+            for (key in currentValue) {
+                // if the currentValues value equals the highestValue
+                if (currentValue[key] === highestValue) {
+                    // return the current object
+                    return currentValue;
+                }
+            }
+        }
     }
 }
 
@@ -310,7 +344,7 @@ let inventory = [
     {name: 'bananas', quantity: 0},
     {name: 'cherries', quantity: 5}
 ];
-let arrayObjects = [{title: "Cymbeline", author: "Shakespeare", year: 1611}, {title: "The Tempest", author: "Shakespeare", year: 1611}, {title: "The Tempest2", author: "Shakespearez", year: 1614}];
+let arrayObjects = [{title: "Cymbeline", author: "Shakespeare", year: 1603}, {title: "The Tempest", author: "Shakespeare", year: 1611}, {title: "The Tempest2", author: "Shakespearez", year: 1614}];
 
 function addNum(num) {
     let result = 0;
@@ -341,4 +375,5 @@ function evenNum(num) {
 // console.log(_.some(negArray, evenNum));
 // console.log(_.contains(anArray, 9));
 // console.log(_.invoke(arrayOfArrays, 'sort'));
-console.log(_.pluck(arrayObjects, 'title'));
+// console.log(_.pluck(arrayObjects, 'title'));
+console.log(_.max(inventory));
