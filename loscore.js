@@ -280,6 +280,23 @@ const _ = {
         }
         // return array
         return result;
+    },
+
+    pluck: function (collection, propertyname) {
+        // create result array
+        let result = [];
+        // iterate through collection
+        for (let i = 0; i < collection.length; i += 1) {
+            // save current value to temp variable
+            let temp = collection[i];
+            // how to access key of objects
+            for (let key in temp) {
+                if (key === propertyname) {
+                    result.push(temp[key]);
+                }
+            }
+        }
+        return result;
     }
 }
 
@@ -323,4 +340,5 @@ function evenNum(num) {
 // console.log(_.findWhere(arrayObjects, {year: 1614}));
 // console.log(_.some(negArray, evenNum));
 // console.log(_.contains(anArray, 9));
-console.log(_.invoke(arrayOfArrays, 'sort'));
+// console.log(_.invoke(arrayOfArrays, 'sort'));
+console.log(_.pluck(arrayObjects, 'title'));
