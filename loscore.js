@@ -1,17 +1,16 @@
+const realUnderscore = require('underscore');
+
 const _ = {
+    // Function Signature: It takes two arguments, a collection/ list and an iterator.
+    // The return value will be undefined
+    // This function iterates through a collection of elements, which then runs each element through an iterator
     each: function (collection, iterator) {
-        // if the collection is an array
         if (Array.isArray(collection)) {
-            // iterate through the collection
             for (let i = 0; i < collection.length; i += 1) {
-                // execute the function on the individual element
                 iterator(collection[i]);
             }
-        // if not an array...
         } else {
-            // iterate through the object
             for (key in collection) {
-                // and execute the function on the individual element
                 iterator(collection[key]);
             }
         }
@@ -116,13 +115,13 @@ const _ = {
         // ...otherwise, use the index in the (loop?) conditional
         let result = [];
         // and reverse how you iterate through the array
-        for (let i = array.length - 1; i >= array.length - numElements; i -= 1) {
+        for (let i = array.length - numElements; i < array.length; i += 1) {
             // and push the selected elements into an array
             result.push(array[i]);
         }
         // and then turn the array into a string with spaces
-        // and return the string
-        return result.join(' ')
+        // and return the array
+        return result
     },
 
     find: function (array, iterator) {
@@ -360,12 +359,14 @@ function evenNum(num) {
     return num % 2 == 0;
 };
 
-// _.each(anArray, console.log);
+_.each(anArray, console.log);
+realUnderscore.each(anArray, console.log);
 // console.log(_.map(anArray, addNum));
 // console.log(_.reduce(anArray, addNum));
 // console.log(_.first(anArray, 3));
 // console.log(_.initial(anArray, 3));
 // console.log(_.last(anArray, 3));
+// console.log('real_', realUnderscore.last(anArray, 3));
 // console.log(_.find(inventory, isCherries));
 // console.log(_.filter(anArray, evenNum));
 // console.log(_.reject(anArray,evenNum));
@@ -376,4 +377,11 @@ function evenNum(num) {
 // console.log(_.contains(anArray, 9));
 // console.log(_.invoke(arrayOfArrays, 'sort'));
 // console.log(_.pluck(arrayObjects, 'title'));
-console.log(_.max(inventory));
+// console.log(_.max(inventory));
+
+
+
+// write documentation first
+// what you want the function to do
+// func signature included as well
+// put documentation on top of functions above

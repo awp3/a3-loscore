@@ -1,0 +1,11 @@
+{
+  "name": "a3-loscore",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/awp3/a3-loscore.git",
+  "author": "Ahart Powers <apowersiii@me.com>",
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
