@@ -3,7 +3,8 @@ const realUnderscore = require('underscore');
 const _ = {
     // Function Signature: It takes two arguments, a collection/ list and an iterator.
     // The return value will be undefined
-    // This function iterates through a collection of elements, which then runs each element through an iterator
+    // This function iterates through a collection of elements,
+    // which then runs each element through an iterator
     each: function (collection, iterator) {
         if (Array.isArray(collection)) {
             for (let i = 0; i < collection.length; i += 1) {
@@ -16,28 +17,22 @@ const _ = {
         }
     },
 
+    // Function Signature: It takes two arguments, a collection / list and an iterator. 
+    // It returns a new array of elements
+    // This function will take a collection and map each value to the iterator.
+    // The results from the iterator will be added to a new results array
     map: function (collection, iterator) {
-        // create an array for the final result
         let newArray = [];
         
-        // if the collection is an actual array
         if (Array.isArray(collection)) {
-            // iterate through it 
             for (let i = 0; i < collection.length; i += 1) {
-                // run the element through the callback function
-                // and push the result into the newArray
                 newArray.push(iterator(collection[i]));
             }
-        // if collection is not an array
         } else {
-            // iterate through the object
             for (key in collection) {
-                // and run the element through the callback function
-                // and push the result in the newArray
                 newArray.push(iterator(collection[key]));
             }
         }
-        // return the results
         return newArray;
     },
 
@@ -359,9 +354,10 @@ function evenNum(num) {
     return num % 2 == 0;
 };
 
-_.each(anArray, console.log);
-realUnderscore.each(anArray, console.log);
-// console.log(_.map(anArray, addNum));
+// _.each(anArray, console.log);
+// realUnderscore.each(anArray, console.log);
+console.log(_.map(anArray, addNum));
+console.log('real_', realUnderscore.map(anArray, addNum));
 // console.log(_.reduce(anArray, addNum));
 // console.log(_.first(anArray, 3));
 // console.log(_.initial(anArray, 3));
