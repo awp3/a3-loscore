@@ -6,6 +6,7 @@ const _ = {
     // This function iterates through a collection of elements,
     // which then runs each element through an iterator
     each: function (collection, iterator) {
+
         if (Array.isArray(collection)) {
             for (let i = 0; i < collection.length; i += 1) {
                 iterator(collection[i]);
@@ -23,32 +24,24 @@ const _ = {
     // The results from the iterator will be added to a new results array
     map: function (collection, iterator) {
         let newArray = [];
-        
-        if (Array.isArray(collection)) {
-            for (let i = 0; i < collection.length; i += 1) {
-                newArray.push(iterator(collection[i]));
-            }
-        } else {
-            for (key in collection) {
-                newArray.push(iterator(collection[key]));
-            }
-        }
+
+       _.each(collection, function (element) {
+        newArray.push(iterator(element));
+       });
+       
         return newArray;
     },
 
-    reduce: function (collection, iterator) {
-        // create a result to return when function finishes
-        let result = 0;
-
-        // iterate through the collection
+    // Function Signature: takes two arguments which is a collection
+    // and an iterator and returns a single value.
+    // This function takes a collection of values
+    // and executes the iterator on each one and returns the 
+    // result of all the collection values into one value
+    reduce: function (collection, iterator, memo) {
         for (let i = 0; i < collection.length; i += 1) {
-            // run the element through the callback function
-            // and add the result from the callback
-            // to the result variable
-            result += iterator(collection[i]);
+            memo = iterator(memo, collection[i]);
         }
-        // return the final result
-        return result;
+        return memo;
     },
 
     first: function (array, index) {
@@ -346,9 +339,14 @@ function addNum(num) {
     return result;
 };
 
+function addOne(memo, num) {
+    return memo + num;
+}
+
 function isCherries(fruit) { 
     return fruit.name === 'cherries';
 };
+
 
 function evenNum(num) {
     return num % 2 == 0;
@@ -358,7 +356,8 @@ function evenNum(num) {
 // realUnderscore.each(anArray, console.log);
 console.log(_.map(anArray, addNum));
 console.log('real_', realUnderscore.map(anArray, addNum));
-// console.log(_.reduce(anArray, addNum));
+// console.log('my function', _.reduce(posArray, addOne, 5));
+// console.log('real_', realUnderscore.reduce(posArray, addOne, 5));
 // console.log(_.first(anArray, 3));
 // console.log(_.initial(anArray, 3));
 // console.log(_.last(anArray, 3));
