@@ -2,12 +2,11 @@
 My first repository on GitHub
 
 I will attempt to recreate a few underscore functions in an attempt to show how they work 'under the hood.'
-This will be my practice as a beginner developer.
+This will be my practice as a beginner developer. First things first, I created a repository for this assignment.
 
-1. Create a repository
-
-2. Completed the _.each function
-
+1. _.each function
+ <img src="images/00-eachFunction.jpg" width="300">
+ 
 3. Completed the _.map function
 
 4. Completed the _.reduce function
