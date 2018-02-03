@@ -1,8 +1,12 @@
 # a3-loscore
 My first repository on GitHub
 
-I will attempt to recreate a few underscore functions in an attempt to show how they work 'under the hood.'
-This will be my practice as a beginner developer. First things first, I created a repository for this assignment.
+I will attempt to recreate a few underscore functions
+in an attempt to show how they work 'under the hood.'
+This will be my practice as a beginner developer. 
+
+First off, I created a repository for this assignment.
+And below are the functions with flow charts attached.
 
 1. _.each function
 <img src="images/00-eachFunction.jpg" width="300">
