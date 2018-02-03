@@ -10,7 +10,8 @@ This will be my practice as a beginner developer. First things first, I created 
 2. _.map function
 <img src="images/01-mapFunction.jpg" width="250">
                
-3. Completed the _.reduce function
+3. _.reduce function
+<img src="images/02-reduceFunction.jpg" width="250">
 
 4. Completed the _.first function
 
