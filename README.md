@@ -5,7 +5,9 @@ I will attempt to recreate a few underscore functions in an attempt to show how 
 This will be my practice as a beginner developer. First things first, I created a repository for this assignment.
 
 1. Completed the _.each function
-
+ ![](images/00-eachFunction.jpg)
+ <img src="images/00-eachFunction.jpg" width="100">
+ 
 3. Completed the _.map function
 
 4. Completed the _.reduce function
