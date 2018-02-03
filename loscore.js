@@ -13,11 +13,11 @@ const _ = {
 
         if (Array.isArray(collection)) {
             collection.forEach(element => {
-                iterator(collection[i]);
+                iterator(element);
             })
         } else {
             for (key in collection) {
-                iterator(collection[key]);
+                iterator(element);
             }
         }
     },
@@ -33,12 +33,9 @@ const _ = {
     map: function (collection, iterator) {
         let newResultsArray = [];
 
-        _.each(collection, function (element) {
-            newArray.push(iterator(element)); 
+        _.each(collection, (element) => {
+            newResultsArray.push(iterator(element)); 
         });
-        // collection.forEach(element => {
-        //     newArray.push(iterator(element)); 
-        // });
 
         return newResultsArray;
     },
@@ -390,11 +387,11 @@ function evenNum(num) {
     return num % 2 == 0;
 };
 
-_.each(anArray, console.log);
-realUnderscore.forEach(anArray, console.log);
+// _.each(anArray, console.log);
+// realUnderscore.forEach(anArray, console.log);
 // realUnderscore.each(anArray, console.log);
-// console.log(_.map(anArray, addNum));
-// console.log('real_', realUnderscore.map(anArray, addNum));
+console.log(_.map(anArray, addNum));
+console.log('real_', realUnderscore.map(anArray, addNum));
 // console.log('my function', _.reduce(posArray, addOne));
 // console.log('real_', realUnderscore.reduce(posArray, addOne));
 // console.log(_.first(anArray, 2));
