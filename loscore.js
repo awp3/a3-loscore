@@ -70,13 +70,12 @@ const _ = {
         if (typeof index !== 'number') {
             result.push(array[0]);
         } else {
-            array.forEach((element, i) => {
-                if (i < index) {
+            _.each(array, (element) => {
+                if (element <= index) {
                     result.push(element);
                 }
             });
         }
-
         return result;
     },
 
@@ -394,10 +393,10 @@ function evenNum(num) {
 // realUnderscore.each(anArray, console.log);
 // console.log(_.map(anArray, addNum));
 // console.log('real_', realUnderscore.map(anArray, addNum));
-console.log('my function', _.reduce(posArray, addOne));
-console.log('real_', realUnderscore.reduce(posArray, addOne));
-// console.log(_.first(anArray, 2));
-// console.log('real', realUnderscore.first(anArray, 2));
+// console.log('my function', _.reduce(posArray, addOne));
+// console.log('real_', realUnderscore.reduce(posArray, addOne));
+console.log(_.first(anArray));
+console.log('real', realUnderscore.first(anArray));
 // console.log(_.initial(anArray, 3));
 // console.log('real', realUnderscore.initial(anArray, 3));
 // console.log(_.last(anArray, 3));
