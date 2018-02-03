@@ -7,7 +7,7 @@ const _ = {
      * @param any[] collection 
      * @param callbackFunction iterator
      * 
-     * @return undefined
+     * @returns undefined
      */
     each: function (collection, iterator) {
 
@@ -28,7 +28,7 @@ const _ = {
      * @param any[] collection
      * @param callbackFunction iterator
      * 
-     * @return any[]
+     * @returns any[]
      */
     map: function (collection, iterator) {
         let newResultsArray = [];
@@ -36,23 +36,25 @@ const _ = {
         _.each(collection, (element) => {
             newResultsArray.push(iterator(element)); 
         });
-
         return newResultsArray;
     },
 
-    // Function Signature: takes three arguments which is a collection
-    // an iterator and also a memo. it returns a single value.
-    // This function takes a collection of values
-    // and executes the iterator on each one and saving the result to the memo argument
-    // It returns the result of all the collection values into one value
+    /**
+     * take the value from a list, executes a function on it.
+     * the result is added to the memo parameter which is returned when finished
+     * @param number[] list
+     * @param callbackFunction iterator
+     * @param number memo is optional undefined
+     * 
+     * @returns number single value memo
+     */
     reduce: function (collection, iterator, memo) {
         if (memo === undefined) {
             memo = 0;
         }
-        collection.forEach(element => {
+        _.each(collection, (element) => {
             memo = iterator(memo, element);
         })
-     
         return memo;
     },
 
@@ -390,10 +392,10 @@ function evenNum(num) {
 // _.each(anArray, console.log);
 // realUnderscore.forEach(anArray, console.log);
 // realUnderscore.each(anArray, console.log);
-console.log(_.map(anArray, addNum));
-console.log('real_', realUnderscore.map(anArray, addNum));
-// console.log('my function', _.reduce(posArray, addOne));
-// console.log('real_', realUnderscore.reduce(posArray, addOne));
+// console.log(_.map(anArray, addNum));
+// console.log('real_', realUnderscore.map(anArray, addNum));
+console.log('my function', _.reduce(posArray, addOne));
+console.log('real_', realUnderscore.reduce(posArray, addOne));
 // console.log(_.first(anArray, 2));
 // console.log('real', realUnderscore.first(anArray, 2));
 // console.log(_.initial(anArray, 3));
