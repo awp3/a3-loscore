@@ -5,10 +5,11 @@ I will attempt to recreate a few underscore functions in an attempt to show how 
 This will be my practice as a beginner developer. First things first, I created a repository for this assignment.
 
 1. _.each function
- <img src="images/00-eachFunction.jpg" width="300">
+               <img src="images/00-eachFunction.jpg" width="300">
  
-2. Completed the _.map function
- <img src="images/01-mapFunction.jpg" width="250">
+2. _.map function
+               <img src="images/01-mapFunction.jpg" width="250">
+               
 3. Completed the _.reduce function
 
 4. Completed the _.first function
