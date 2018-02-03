@@ -1,16 +1,20 @@
 const realUnderscore = require('underscore');
 
 const _ = {
-    // Function Signature: It takes two arguments, a collection/ list and an iterator.
-    // The return value will be undefined
-    // This function iterates through a collection of elements,
-    // which then runs each element through an iterator
+    /**
+     * goes through each value in a collection 
+     * and executes a callback function on them but returns undefined
+     * @param any[] collection 
+     * @param callbackFunction iterator
+     * 
+     * @return undefined
+     */
     each: function (collection, iterator) {
 
         if (Array.isArray(collection)) {
-            for (let i = 0; i < collection.length; i += 1) {
+            collection.forEach(element => {
                 iterator(collection[i]);
-            }
+            })
         } else {
             for (key in collection) {
                 iterator(collection[key]);
@@ -18,52 +22,63 @@ const _ = {
         }
     },
 
-    // Function Signature: It takes two arguments, a collection / list and an iterator. 
-    // It returns a new array of elements
-    // This function will take a collection and map each value to the iterator.
-    // The results from the iterator will be added to a new results array
+    /**
+     * takes each value from a collection, runs a callback function on them
+     *  and returns the results in a new array
+     * @param any[] collection
+     * @param callbackFunction iterator
+     * 
+     * @return any[]
+     */
     map: function (collection, iterator) {
-        let newArray = [];
+        let newResultsArray = [];
 
-       _.each(collection, function (element) {
-        newArray.push(iterator(element));
-       });
-       
-        return newArray;
+        _.each(collection, function (element) {
+            newArray.push(iterator(element)); 
+        });
+        // collection.forEach(element => {
+        //     newArray.push(iterator(element)); 
+        // });
+
+        return newResultsArray;
     },
 
-    // Function Signature: takes two arguments which is a collection
-    // and an iterator and returns a single value.
+    // Function Signature: takes three arguments which is a collection
+    // an iterator and also a memo. it returns a single value.
     // This function takes a collection of values
-    // and executes the iterator on each one and returns the 
-    // result of all the collection values into one value
+    // and executes the iterator on each one and saving the result to the memo argument
+    // It returns the result of all the collection values into one value
     reduce: function (collection, iterator, memo) {
-        for (let i = 0; i < collection.length; i += 1) {
-            memo = iterator(memo, collection[i]);
+        if (memo === undefined) {
+            memo = 0;
         }
+        collection.forEach(element => {
+            memo = iterator(memo, element);
+        })
+     
         return memo;
     },
 
+    /** 
+     * returns the first array value, or extract the first n values based on index
+     * @param number[] array 
+     * @param number index is optional undefined
+     * @return number[]
+     */
     first: function (array, index) {
-        // if the index argument is used...
-        if (typeof index === 'number') {
-            // create an array for the final result
-            let result = [];
-            // iterate through the array
-            // using the index for the length
-            for (let i = 0; i < index; i += 1) {
-                // take the indexs element
-                // and push it in the result array
-                result.push(array[i]);
-            }
-            // change the array into a string with spaces and return it
-            return result.join(' ');
-        // ...if no index is given
+        let result = [];
+
+        if (typeof index !== 'number') {
+            result.push(array[0]);
         } else {
-            // return the first element
-            // in the array
-            return array[0];
+            array.forEach((element, i) => {
+                if (i < index) {
+                    result.push(element);
+                }
+            });
         }
+
+        return result;
     },
 
     initial: function (array, index) {
@@ -97,7 +112,6 @@ const _ = {
         if (typeof numElements === 'undefined') {
             // if no 2nd argument,
             // then return the last element in the given array
-            console.log('no returnN value');
             return array[array.length - 1];
         }
         // ...otherwise, use the index in the (loop?) conditional
@@ -177,12 +191,15 @@ const _ = {
         let result = [];
         // iterate through collection
         for (let i = 0; i < collection.length; i += 1) {
+            let currentObject = collection[i]
+            let currentProperty = Object.keys(properties)[i];
+
             // iterate through each elements value
-            for (let value of Object.values(collection[i])) {
+            for (let value of Object.values(currentObject)) {
                 // if a value matches any of the properties values
                 if (value === Object.values(properties)[i]) {
                     // put into an array
-                    result.push(collection[i])
+                    result.push(currentObject)
                 }
             }
         }
@@ -256,9 +273,9 @@ const _ = {
         // create a result array
         let result = [];
         // iterate through collection
-        for (let indexValue = 0; indexValue < collection.length; indexValue += 1) {
+        for (let i = 0; i < collection.length; i += 1) {
             // assign mini array to tempValue
-            let tempValue = collection[indexValue];
+            let tempValue = collection[i];
             // apply methodName to tempValue  
             // **********    TROUBLE POINT    *************
             tempValue[methodName]();
@@ -331,7 +348,28 @@ let inventory = [
     {name: 'bananas', quantity: 0},
     {name: 'cherries', quantity: 5}
 ];
-let arrayObjects = [{title: "Cymbeline", author: "Shakespeare", year: 1603}, {title: "The Tempest", author: "Shakespeare", year: 1611}, {title: "The Tempest2", author: "Shakespearez", year: 1614}];
+let arrayObjects = [{title: "Cymbeline", author: "Shakespeare", year: 1603},
+ {title: "The Tempest", author: "Shakespeare", year: 1611},
+  {title: "The Tempest2", author: "Shakespearez", year: 1614}];
+
+let arrayObjectsTwo = {
+    sports: {
+        title: "Cymbeline",
+        author: "Shakespeare",
+        year: 1603},
+    business: {
+        title: "The Tempest", 
+        author: "Shakespeare", 
+        year: 1611},
+    movies: {
+        title: "The Tempest2", 
+        author: "Shakespearez", 
+        year: 1614},
+    cat: {
+        name: 'meow',
+        age: 1
+    }
+};
 
 function addNum(num) {
     let result = 0;
@@ -352,24 +390,35 @@ function evenNum(num) {
     return num % 2 == 0;
 };
 
-// _.each(anArray, console.log);
+_.each(anArray, console.log);
+realUnderscore.forEach(anArray, console.log);
 // realUnderscore.each(anArray, console.log);
-console.log(_.map(anArray, addNum));
-console.log('real_', realUnderscore.map(anArray, addNum));
-// console.log('my function', _.reduce(posArray, addOne, 5));
-// console.log('real_', realUnderscore.reduce(posArray, addOne, 5));
-// console.log(_.first(anArray, 3));
+// console.log(_.map(anArray, addNum));
+// console.log('real_', realUnderscore.map(anArray, addNum));
+// console.log('my function', _.reduce(posArray, addOne));
+// console.log('real_', realUnderscore.reduce(posArray, addOne));
+// console.log(_.first(anArray, 2));
+// console.log('real', realUnderscore.first(anArray, 2));
 // console.log(_.initial(anArray, 3));
+// console.log('real', realUnderscore.initial(anArray, 3));
 // console.log(_.last(anArray, 3));
 // console.log('real_', realUnderscore.last(anArray, 3));
 // console.log(_.find(inventory, isCherries));
+// console.log('real', realUnderscore.find(inventory, isCherries));
 // console.log(_.filter(anArray, evenNum));
+// console.log('real', realUnderscore.filter(anArray, evenNum));
 // console.log(_.reject(anArray,evenNum));
+// console.log('real', realUnderscore.reject(anArray, evenNum));
 // console.log(_.every(negArray, evenNum));
+// console.log('real', realUnderscore.every(negArray, evenNum));
 // console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
+// console.log('real', realUnderscore.where(arrayObjects, {author: "Shakespeare", year: 1611}));
 // console.log(_.findWhere(arrayObjects, {year: 1614}));
+// console.log('real', realUnderscore.findWhere(arrayObjects, {year: 1614}));
 // console.log(_.some(negArray, evenNum));
+// console.log('real', realUnderscore.some(negArray, evenNum));
 // console.log(_.contains(anArray, 9));
+// console.log('real', realUnderscore.contains(anArray, 9));
 // console.log(_.invoke(arrayOfArrays, 'sort'));
 // console.log(_.pluck(arrayObjects, 'title'));
 // console.log(_.max(inventory));
@@ -380,3 +429,4 @@ console.log('real_', realUnderscore.map(anArray, addNum));
 // what you want the function to do
 // func signature included as well
 // put documentation on top of functions above
+
