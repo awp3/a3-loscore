@@ -17,7 +17,8 @@ And below are the functions with flow charts attached.
 3. _.reduce function
 <img src="images/02-reduceFunction.jpg" width="250">
 
-4. Completed the _.first function
+4. _.first function
+<img src="images/03-firstFunction.jpg" width="250">
 
 5. Completed the _.initial function
 
