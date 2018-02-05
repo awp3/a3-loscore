@@ -29,6 +29,7 @@ And below are the functions with flow charts attached.
 7. Completed the _.find function
 
 8. Completed the _.filter function
+<img src="images/06-filterFunction.jpg" width="250">
 
 9. Completed the _.reject function
 
