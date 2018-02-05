@@ -20,9 +20,11 @@ And below are the functions with flow charts attached.
 4. _.first function
 <img src="images/03-firstFunction.jpg" width="250">
 
-5. Completed the _.initial function
+5. _.initial function
+<img src="images/04-initialFunction.jpg" width="250">
 
-6. Completed the _.last function
+6. _.last function
+<img src="images/05-lastFunction.jpg" width="250">
 
 7. Completed the _.find function
 
