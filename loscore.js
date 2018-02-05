@@ -62,6 +62,7 @@ const _ = {
      * returns the first array value, or extract the first n values based on index
      * @param number[] array 
      * @param number index is optional undefined
+     * 
      * @return number[]
      */
     first: function (array, index) {
@@ -79,48 +80,42 @@ const _ = {
         return result;
     },
 
-    initial: function (array, index) {
-        // create an array for the final result
-        let newResult = [];
+    /**
+     * takes an array and returns an array of all the values except
+     * for the last value. If N is given, it will exclude the last
+     * N values from the return array.
+     * @param number[] array
+     * @param number excludeN is optional undefined
+     * @returns number[]
+     */
+    initial: function (array, excludeN) {
+        let exclude = excludeN;
 
-        // if there is no index argument given...
-        if (index === undefined) {
-            // iterate through the array
-            // with a shorter array length
-            for (let i = 0; i < array.length - 1; i += 1) {
-                // take the element
-                // and put it in the final result array
-                newResult.push(array[i]);
-            }
+        if (exclude === undefined) {
+            exclude = 1
         }
-        // ...if an index is given
-        // iterate through the array
-        // using the index number to shorten the arrays length
-        for (let i = 0; i < array.length - index; i += 1) {
-            // take the individual element
-            // and push it into the final result array
-            newResult.push(array[i]);
-        }
-        // return the results
-        return newResult;
+        return _.first(array, array.length - exclude)
     },
 
+    /**
+     * returns the last value in array
+     * or returns the last numElements in array
+     * @param number[] array
+     * @param number numElements is optional undefined
+     * @returns number[]
+     */
     last: function (array, numElements) {
-        // check if there is a 2nd argument...
-        if (typeof numElements === 'undefined') {
-            // if no 2nd argument,
-            // then return the last element in the given array
-            return array[array.length - 1];
-        }
-        // ...otherwise, use the index in the (loop?) conditional
         let result = [];
-        // and reverse how you iterate through the array
-        for (let i = array.length - numElements; i < array.length; i += 1) {
-            // and push the selected elements into an array
-            result.push(array[i]);
+
+        if (typeof numElements === 'undefined') {
+            result.push(array[array.length - 1]);
         }
-        // and then turn the array into a string with spaces
-        // and return the array
+
+        _.each(array, (element) => {
+            if ((element + numElements) > array.length) {
+                result.push(element);
+            }
+        })
         return result
     },
 
@@ -395,12 +390,12 @@ function evenNum(num) {
 // console.log('real_', realUnderscore.map(anArray, addNum));
 // console.log('my function', _.reduce(posArray, addOne));
 // console.log('real_', realUnderscore.reduce(posArray, addOne));
-console.log(_.first(anArray));
-console.log('real', realUnderscore.first(anArray));
-// console.log(_.initial(anArray, 3));
-// console.log('real', realUnderscore.initial(anArray, 3));
-// console.log(_.last(anArray, 3));
-// console.log('real_', realUnderscore.last(anArray, 3));
+// console.log(_.first(anArray));
+// console.log('real', realUnderscore.first(anArray));
+// console.log(_.initial(anArray, 5));
+// console.log('real', realUnderscore.initial(anArray, 5));
+console.log(_.last(anArray, 5));
+console.log('real_', realUnderscore.last(anArray, 5));
 // console.log(_.find(inventory, isCherries));
 // console.log('real', realUnderscore.find(inventory, isCherries));
 // console.log(_.filter(anArray, evenNum));
