@@ -27,6 +27,7 @@ And below are the functions with flow charts attached.
 <img src="images/05-lastFunction.jpg" width="250">
 
 7. Completed the _.find function
+<img src="images/07-findFunction.jpg" width="250">
 
 8. Completed the _.filter function
 <img src="images/06-filterFunction.jpg" width="250">
