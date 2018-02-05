@@ -119,7 +119,6 @@ const _ = {
         return result;
     },
 
-    find: function (collection, iterator) {
     /**
      * iterates through array and returns first value
      * that passes iterator test. If not, returns undefined
@@ -127,8 +126,10 @@ const _ = {
      * @param callbackFunction iterator
      * @returns single value or undefined
      */
+    find: function (collection, iterator) {
         return _.filter(collection, iterator)[0];
     },
+
     /**
      * iterates through array and returns
      * an array of values that pass iterators test
@@ -152,16 +153,11 @@ const _ = {
         // create a new array
         let result = [];
     
-        // iterate through the collection
-        for (let i = 0; i < array.length; i += 1) {
-            // execute the callback on each element
-            // if it doesnt pass the test
-            if (!iterator(array[i])) {
-                // put in result array
-                result.push(array[i]);
+        _.each(array, (element) => {
+            if (!iterator(element)) {
+                result.push(element);
             }
-        }
-        // return array when done
+        })
         return result;
     },
 
@@ -395,14 +391,14 @@ function evenNum(num) {
 // console.log('real', realUnderscore.initial(anArray, 5));
 // console.log(_.last(anArray, 5));
 // console.log('real_', realUnderscore.last(anArray, 5));
-console.log('mine', _.find(anArray, evenNum));
-console.log('real', realUnderscore.find(anArray, evenNum));
-console.log('mine', _.find(inventory, isCherries));
-console.log('real', realUnderscore.find(inventory, isCherries));
+// console.log('mine', _.find(anArray, evenNum));
+// console.log('real', realUnderscore.find(anArray, evenNum));
+// console.log('mine', _.find(inventory, isCherries));
+// console.log('real', realUnderscore.find(inventory, isCherries));
 // console.log(_.filter(anArray, evenNum));
 // console.log('real', realUnderscore.filter(anArray, evenNum));
-// console.log(_.reject(anArray,evenNum));
-// console.log('real', realUnderscore.reject(anArray, evenNum));
+console.log(_.reject(anArray,evenNum));
+console.log('real', realUnderscore.reject(anArray, evenNum));
 // console.log(_.every(negArray, evenNum));
 // console.log('real', realUnderscore.every(negArray, evenNum));
 // console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
