@@ -108,7 +108,7 @@ const _ = {
         let result = [];
 
         if (typeof numElements === 'undefined') {
-            result.push(array[array.length - 1]);
+            result.push(array.pop());
         }
 
         _.each(array, (element) => {
@@ -116,36 +116,35 @@ const _ = {
                 result.push(element);
             }
         })
-        return result
+        return result;
     },
 
-    find: function (array, iterator) {
-        // iterate through array
-        for (let i = 0; i < array.length; i++) {
-            // execute iterator on each array element
-            // if current element pass iterators condition
-            if (iterator(array[i])) {
-                // return current element
-                return array[i];
-            };
-            // otherwise return undefined
-        }
+    find: function (collection, iterator) {
+    /**
+     * iterates through array and returns first value
+     * that passes iterator test. If not, returns undefined
+     * @param any[] collection
+     * @param callbackFunction iterator
+     * @returns single value or undefined
+     */
+        return _.filter(collection, iterator)[0];
     },
-
+    /**
+     * iterates through array and returns
+     * an array of values that pass iterators test
+     * @param any[] array
+     * @param callBackFunction iterator
+     * @returns array of passed values
+     */
     filter: function (array, iterator) {
         // create new array
         let result = [];
 
-        // iterate through an array
-        for (let i = 0; i < array.length; i += 1) {
-            // execute the iterator on each element
-            // if the element passes
-            if (iterator(array[i])) {
-                // it will be added to an array
-                result.push(array[i]);
+        _.each(array, (element) => {
+            if (iterator(element)) {
+                result.push(element);
             }
-        }
-        // returns array when done
+        })
         return result;
     },
 
@@ -394,10 +393,12 @@ function evenNum(num) {
 // console.log('real', realUnderscore.first(anArray));
 // console.log(_.initial(anArray, 5));
 // console.log('real', realUnderscore.initial(anArray, 5));
-console.log(_.last(anArray, 5));
-console.log('real_', realUnderscore.last(anArray, 5));
-// console.log(_.find(inventory, isCherries));
-// console.log('real', realUnderscore.find(inventory, isCherries));
+// console.log(_.last(anArray, 5));
+// console.log('real_', realUnderscore.last(anArray, 5));
+console.log('mine', _.find(anArray, evenNum));
+console.log('real', realUnderscore.find(anArray, evenNum));
+console.log('mine', _.find(inventory, isCherries));
+console.log('real', realUnderscore.find(inventory, isCherries));
 // console.log(_.filter(anArray, evenNum));
 // console.log('real', realUnderscore.filter(anArray, evenNum));
 // console.log(_.reject(anArray,evenNum));
