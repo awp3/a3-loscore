@@ -1,4 +1,4 @@
-# a3-loscore
+# powerScore
 My first repository on GitHub
 
 I will attempt to recreate a few underscore functions
@@ -33,6 +33,7 @@ And below are the functions with flow charts attached.
 <img src="images/06-filterFunction.jpg" width="250">
 
 9. Completed the _.reject function
+<img src="images/08-rejectFunction.jpg" width="250">
 
 10. Completed the _.every function
 
