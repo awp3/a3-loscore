@@ -36,6 +36,7 @@ And below are the functions with flow charts attached.
 <img src="images/08-rejectFunction.jpg" width="250">
 
 10. Completed the _.every function
+<img src="images/09-everyFunction.jpg" width="250">
 
 11. Completed the _.where function
 
