@@ -5,7 +5,7 @@ const _ = {
      * goes through each value in a collection 
      * and executes a callback function on them but returns undefined
      * @param any[] collection 
-     * @param callbackFunction iterator
+     * @param cb iterator
      * 
      * @returns undefined
      */
@@ -26,7 +26,7 @@ const _ = {
      * takes each value from a collection, runs a callback function on them
      *  and returns the results in a new array
      * @param any[] collection
-     * @param callbackFunction iterator
+     * @param cb iterator
      * 
      * @returns any[]
      */
@@ -43,7 +43,7 @@ const _ = {
      * take the value from a list, executes a function on it.
      * the result is added to the memo parameter which is returned when finished
      * @param number[] list
-     * @param callbackFunction iterator
+     * @param cb iterator
      * @param number memo is optional undefined
      * 
      * @returns number single value memo
@@ -134,7 +134,7 @@ const _ = {
      * iterates through array and returns
      * an array of values that pass iterators test
      * @param any[] array
-     * @param callBackFunction iterator
+     * @param cb iterator
      * @returns array of passed values
      */
     filter: function (array, iterator) {
@@ -149,6 +149,13 @@ const _ = {
         return result;
     },
 
+    /**
+     * iterates through array and returns an array of values
+     * that dont pass the iterators test
+     * @param any[] array
+     * @param cb iterator
+     * @returns array of failed values
+     */
     reject: function (array, iterator) {
         // create a new array
         let result = [];
@@ -161,17 +168,23 @@ const _ = {
         return result;
     },
 
+    /**
+     * iterates through array and executes iterator on each value
+     * if all values pass, return true, if one of the values fail,
+     * return false
+     * @param numbers[] array
+     * @param cb iterator
+     * @returns boolean
+     */
     every: function (array, iterator) {
-        // iterate through the array
-        for (let i = 0; i < array.length; i += 1) {
-            // execute the iterator on each element
-            // if it doesnt pass, return false
-            if (!iterator(array[i])) {
-                return false;
+        let result = true;
+
+        _.each(array, (element) => {
+            if (!iterator(element)) {
+                result = false;
             }
-        }
-        // otherwise, return true
-        return true;
+        })
+        return result;
     },
 
     where: function (collection, properties) {
@@ -397,10 +410,10 @@ function evenNum(num) {
 // console.log('real', realUnderscore.find(inventory, isCherries));
 // console.log(_.filter(anArray, evenNum));
 // console.log('real', realUnderscore.filter(anArray, evenNum));
-console.log(_.reject(anArray,evenNum));
-console.log('real', realUnderscore.reject(anArray, evenNum));
-// console.log(_.every(negArray, evenNum));
-// console.log('real', realUnderscore.every(negArray, evenNum));
+// console.log(_.reject(anArray,evenNum));
+// console.log('real', realUnderscore.reject(anArray, evenNum));
+console.log(_.every(posArray, evenNum));
+console.log('real', realUnderscore.every(posArray, evenNum));
 // console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
 // console.log('real', realUnderscore.where(arrayObjects, {author: "Shakespeare", year: 1611}));
 // console.log(_.findWhere(arrayObjects, {year: 1614}));
