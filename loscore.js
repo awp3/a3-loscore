@@ -178,36 +178,43 @@ const _ = {
      */
     every: function (array, iterator) {
         let result = true;
+        let rejectCheck = _.reject(array, iterator);
 
-        _.each(array, (element) => {
-            if (!iterator(element)) {
-                result = false;
-            }
-        })
-        return result;
-    },
-
-    where: function (collection, properties) {
-        // new array
-        let result = [];
-        // iterate through collection
-        for (let i = 0; i < collection.length; i += 1) {
-            let currentObject = collection[i]
-            let currentProperty = Object.keys(properties)[i];
-
-            // iterate through each elements value
-            for (let value of Object.values(currentObject)) {
-                // if a value matches any of the properties values
-                if (value === Object.values(properties)[i]) {
-                    // put into an array
-                    result.push(currentObject)
-                }
-            }
+        if (rejectCheck.length !== 0) {
+            result = false;
         }
-        // return the array when done
         return result;
     },
 
+    containsObject: function (collectionEntry, properties) {
+        let arrayOfPropKeys = Object.keys(properties);
+        let comparisonResult = true;
+
+        for (let i = 0; i < arrayOfPropKeys.length; i += 1) {
+            let currentKey = arrayOfPropKeys[i];
+            let currentPropertiesValue = properties[currentKey];
+            let currentCollectionValue = collectionEntry[currentKey];
+
+            if (currentPropertiesValue !== currentCollectionValue) {
+               comparisonResult = false;
+            }
+        } 
+        return comparisonResult;
+    },
+
+    /**
+     * iterates through an array and returns the objects that 
+     * match the key value pairs from the properties argument
+     * @param objects[] collections
+     * @param {} properties
+     * @returns [] of objects
+     */
+    where: function (collection, properties) {
+        return _.filter(collection, (element) => {
+            return _.containsObject(element, properties);
+        });
+    },
+    
     findWhere: function (collection, properties) {
         // create temp holders for the properties key and values
         let tempProperities;
@@ -412,10 +419,10 @@ function evenNum(num) {
 // console.log('real', realUnderscore.filter(anArray, evenNum));
 // console.log(_.reject(anArray,evenNum));
 // console.log('real', realUnderscore.reject(anArray, evenNum));
-console.log(_.every(posArray, evenNum));
-console.log('real', realUnderscore.every(posArray, evenNum));
-// console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
-// console.log('real', realUnderscore.where(arrayObjects, {author: "Shakespeare", year: 1611}));
+// console.log(_.every(posArray, evenNum));
+// console.log('real', realUnderscore.every(posArray, evenNum));
+console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
+console.log('real', realUnderscore.where(arrayObjects, {author: "Shakespeare", year: 1611}));
 // console.log(_.findWhere(arrayObjects, {year: 1614}));
 // console.log('real', realUnderscore.findWhere(arrayObjects, {year: 1614}));
 // console.log(_.some(negArray, evenNum));
