@@ -249,9 +249,16 @@ const _ = {
         return;
     },
 
+    /**
+     * iterates through array and returns
+     * true when one of the values passes
+     * @param [] collection
+     * @param cb iterator
+     * @returns boolean
+     */
     firstBool: function (collection, iterator) {
-        for (let i = 0; i < collection.length; i += 1) {
-            if (iterator(collection[i])) {
+        for (let element of collection) {
+            if (iterator(element)) {
                 return true;
             }
         }
@@ -266,22 +273,24 @@ const _ = {
      * @returns boolean
      */
     some: function (collection, iterator) {
-
         return _.firstBool(collection, iterator);
     },
 
+    /**
+     * iterates through collection and returns true
+     * if element matches the index, otherwise it 
+     * returns false
+     * @param [] collection
+     * @param number index
+     * @returns boolean
+     */
     contains: function (collection, value) {
-        // iterate through collection
-        for (let currentElement = 0;
-             currentElement < collection.length;
-             currentElement += 1) {
-            // if current element is equal to the value argument
-            if (collection[currentElement] === value) {
-                // return true
-                return true;
+        for (let element of collection) {
+            console.log(value);
+            if (element === value) {
+                return true
             }
         }
-        // if no value return false
         return false;
     },
 
@@ -435,8 +444,8 @@ function evenNum(num) {
 // console.log('real', realUnderscore.findWhere(arrayObjects, {year: 1614}));
 console.log(_.some(posArray, evenNum));
 console.log('real', realUnderscore.some(posArray, evenNum));
-// console.log(_.contains(anArray, 9));
-// console.log('real', realUnderscore.contains(anArray, 9));
+console.log(_.contains(anArray, 2));
+console.log('real', realUnderscore.contains(anArray, 2));
 // console.log(_.invoke(arrayOfArrays, 'sort'));
 // console.log(_.pluck(arrayObjects, 'title'));
 // console.log(_.max(inventory));
