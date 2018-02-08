@@ -39,6 +39,7 @@ And below are the functions with flow charts attached.
 <img src="images/09-everyFunction.jpg" width="250">
 
 11. Completed the _.where function
+<img src="images/10-whereFunction.jpg" width="250">
 
 12. Completed the _.findWhere function
 
