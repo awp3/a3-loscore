@@ -222,6 +222,14 @@ const _ = {
         });
     },
     
+    /**
+     * iterates through collection and returns
+     * the first value that matches the key-value
+     * pairs and if not, returns undefined.
+     * @param [] collections
+     * @param {} properties
+     * @returns {} || undefined
+     */
     findWhere: function (collection, properties) {
         // create temp holders for the properties key and values
         let tempProperities;
@@ -233,23 +241,17 @@ const _ = {
             tempProperities = prop;
             tempPropValue = properties[prop];
         }
-        // iterate through collection
-        for (let i = 0; i < collection.length; i += 1) {
-            // create temp variable for current object
-            let temp = collection[i];
 
-            // iterate through the objects keys
+        // iterate through collection
+        return _.find(collection, (element) => {
+            let temp = element
             for (let key in temp) {
-                // if key and tempProperties key matches
-                if (key === tempProperities) {
-                    // and if the current objects key value matches the tempProperties key value
-                    if (temp[key] === tempPropValue) {
-                        // return current object
-                        return temp;
-                    }
+                if (temp[key] === tempPropValue) {
+                    return temp;
                 }
             }
-        }
+        })
+
         // if no match, return undefined
         return;
     },
@@ -428,10 +430,10 @@ function evenNum(num) {
 // console.log('real', realUnderscore.reject(anArray, evenNum));
 // console.log(_.every(posArray, evenNum));
 // console.log('real', realUnderscore.every(posArray, evenNum));
-console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
-console.log('real', realUnderscore.where(arrayObjects, {author: "Shakespeare", year: 1611}));
-// console.log(_.findWhere(arrayObjects, {year: 1614}));
-// console.log('real', realUnderscore.findWhere(arrayObjects, {year: 1614}));
+// console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
+// console.log('real', realUnderscore.where(arrayObjects, {author: "Shakespeare", year: 1611}));
+console.log(_.findWhere(arrayObjects, {year: 1614}));
+console.log('real', realUnderscore.findWhere(arrayObjects, {year: 1614}));
 // console.log(_.some(negArray, evenNum));
 // console.log('real', realUnderscore.some(negArray, evenNum));
 // console.log(_.contains(anArray, 9));
