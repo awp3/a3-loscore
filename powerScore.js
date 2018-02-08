@@ -231,44 +231,43 @@ const _ = {
      * @returns {} || undefined
      */
     findWhere: function (collection, properties) {
-        // create temp holders for the properties key and values
         let tempProperities;
         let tempPropValue;
 
-        // iterate through properties
         for (let prop in properties) {
-            // assign key and value to temp property variables
             tempProperities = prop;
             tempPropValue = properties[prop];
         }
 
-        // iterate through collection
         return _.find(collection, (element) => {
-            let temp = element
-            for (let key in temp) {
-                if (temp[key] === tempPropValue) {
-                    return temp;
+            for (let key in element) {
+                if (element[key] === tempPropValue) {
+                    return element;
                 }
             }
         })
-
-        // if no match, return undefined
         return;
     },
 
-    some: function (collection, iterator) {
-        // iterate through the collection
-        for (let currentElement = 0;
-             currentElement < collection.length;
-             currentElement += 1) {
-            // execute the iterator on the current element
-            if (iterator(collection[currentElement])) {
-                // if it passes, return true
+    firstBool: function (collection, iterator) {
+        for (let i = 0; i < collection.length; i += 1) {
+            if (iterator(collection[i])) {
                 return true;
             }
         }
-        // else return, return false
         return false;
+    },
+
+    /**
+     * iterates through collection and returns
+     * true if any value passes, otherwise returns false
+     * @param [] collection
+     * @param cb iterator
+     * @returns boolean
+     */
+    some: function (collection, iterator) {
+
+        return _.firstBool(collection, iterator);
     },
 
     contains: function (collection, value) {
@@ -432,10 +431,10 @@ function evenNum(num) {
 // console.log('real', realUnderscore.every(posArray, evenNum));
 // console.log(_.where(arrayObjects, {author: "Shakespeare", year: 1611}));
 // console.log('real', realUnderscore.where(arrayObjects, {author: "Shakespeare", year: 1611}));
-console.log(_.findWhere(arrayObjects, {year: 1614}));
-console.log('real', realUnderscore.findWhere(arrayObjects, {year: 1614}));
-// console.log(_.some(negArray, evenNum));
-// console.log('real', realUnderscore.some(negArray, evenNum));
+// console.log(_.findWhere(arrayObjects, {year: 1614}));
+// console.log('real', realUnderscore.findWhere(arrayObjects, {year: 1614}));
+console.log(_.some(posArray, evenNum));
+console.log('real', realUnderscore.some(posArray, evenNum));
 // console.log(_.contains(anArray, 9));
 // console.log('real', realUnderscore.contains(anArray, 9));
 // console.log(_.invoke(arrayOfArrays, 'sort'));
