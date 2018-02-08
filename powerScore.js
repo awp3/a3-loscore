@@ -186,20 +186,27 @@ const _ = {
         return result;
     },
 
+    /**
+     * iterates through objects properties and compares values
+     * to properties values. Returns true if elements match
+     * otherwise, returns false
+     * @param {} collectionEntry
+     * @param {} properties
+     * @returns boolean
+     */
     containsObject: function (collectionEntry, properties) {
-        let arrayOfPropKeys = Object.keys(properties);
-        let comparisonResult = true;
+        let arrayPropKeys = Object.keys(properties);
+        let compareResult = true;
 
-        for (let i = 0; i < arrayOfPropKeys.length; i += 1) {
-            let currentKey = arrayOfPropKeys[i];
-            let currentPropertiesValue = properties[currentKey];
-            let currentCollectionValue = collectionEntry[currentKey];
+        for (let currentKey of arrayPropKeys) {
+            let propValueNow = properties[currentKey];
+            let collectionValueNow = collectionEntry[currentKey];
 
-            if (currentPropertiesValue !== currentCollectionValue) {
-               comparisonResult = false;
-            }
-        } 
-        return comparisonResult;
+            if (propValueNow !== collectionValueNow) {
+                compareResult = false;
+             }
+        }
+        return compareResult;
     },
 
     /**
