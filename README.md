@@ -42,11 +42,15 @@ And below are the functions with flow charts attached.
 <img src="images/10-whereFunction.jpg" width="250">
 
 12. Completed the _.findWhere function
+<img src="images/12-findWhereFunction.jpg" width="250">
 
 13. Completed the _.some function
+<img src="images/13-someFunction.jpg" width="250">
 
 14. Completed the _.contains function
+<img src="images/11-containsFunction.jpg" width="250">
 
 15. Completed the _.invoke function
+<img src="images/14-invokeFunction.jpg" width="250">
 
 16. Completed the _.max function
