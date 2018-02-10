@@ -51,5 +51,6 @@ And below are the functions with flow charts attached.
 <img src="images/11-containsFunction.jpg" width="250">
 
 15. Completed the _.invoke function
+<img src="images/14-invokeFunction.jpg" width="250">
 
 16. Completed the _.max function
