@@ -286,7 +286,6 @@ const _ = {
      */
     contains: function (collection, value) {
         for (let element of collection) {
-            console.log(value);
             if (element === value) {
                 return true
             }
@@ -294,21 +293,17 @@ const _ = {
         return false;
     },
 
+    /**
+     * iterates through elements in array and 
+     * runs methodName on them and returns the results
+     * @param [] collection
+     * @param string methodName
+     * @returns []
+     */
     invoke: function (collection, methodName) {
-        // create a result array
-        let result = [];
-        // iterate through collection
-        for (let i = 0; i < collection.length; i += 1) {
-            // assign mini array to tempValue
-            let tempValue = collection[i];
-            // apply methodName to tempValue  
-            // **********    TROUBLE POINT    *************
-            tempValue[methodName]();
-            // push result to result array
-            result.push(tempValue[methodName]());
-        }
-        // return array
-        return result;
+        return _.map(collection, (element) => {
+            return element[methodName]();
+        });
     },
 
     pluck: function (collection, propertyname) {
@@ -442,11 +437,12 @@ function evenNum(num) {
 // console.log('real', realUnderscore.where(arrayObjects, {author: "Shakespeare", year: 1611}));
 // console.log(_.findWhere(arrayObjects, {year: 1614}));
 // console.log('real', realUnderscore.findWhere(arrayObjects, {year: 1614}));
-console.log(_.some(posArray, evenNum));
-console.log('real', realUnderscore.some(posArray, evenNum));
-console.log(_.contains(anArray, 2));
-console.log('real', realUnderscore.contains(anArray, 2));
-// console.log(_.invoke(arrayOfArrays, 'sort'));
+// console.log(_.some(posArray, evenNum));
+// console.log('real', realUnderscore.some(posArray, evenNum));
+// console.log(_.contains(anArray, 2));
+// console.log('real', realUnderscore.contains(anArray, 2));
+console.log(_.invoke(arrayOfArrays, 'sort'));
+console.log(realUnderscore.invoke(arrayOfArrays, 'sort'));
 // console.log(_.pluck(arrayObjects, 'title'));
 // console.log(_.max(inventory));
 
